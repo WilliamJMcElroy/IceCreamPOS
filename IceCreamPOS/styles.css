@@ -1,0 +1,39 @@
+:root {
+    --yellow-Light: #fff9c2;
+    --grey-border: #3c3d3d;
+}
+
+body {
+    background-color: var(--yellow-Light) !important;
+}
+
+.menu-item:hover {
+    cursor: cell;
+    transform: scale(1.05);
+}
+
+.menu-img {
+    border-radius: 14px;
+    border-color: var(--grey-border);
+    height: 25vh;
+    width: 25vh;
+    object-fit: cover;
+    object-position: center;
+    justify-content: center;
+}
+
+.menu-item-blurbbox {
+    border-radius: 14px;
+    border-style: ridge;
+    width: fit-content;
+    top: 150px;
+    bottom: 1;
+    background-color: rgba(33, 18, 18, 0.33);
+    backdrop-filter: blur(50px);
+}
+
+.cart {
+    min-height: 50vh;
+    max-height: 80vh;
+
+}

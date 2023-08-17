@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>IceCream Willie's</title>
+</head>
+
+<style>
+    body.debug .container,
+    body.debug .container-fluid {
+        outline: 2px double blue;
+        outline-offset: -2px;
+    }
+
+    body.debug .row {
+        outline: 2px dashed red;
+        outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+        outline: 2px dotted forestgreen;
+        outline-offset: -3px;
+    }
+</style>
+
+<body class="debug container-fluid">
+    <section class="row flex-row-md-reverse">
+        <!-- THIS IS THE CART -->
+        <div class="col-6 col-md-5 order-2 order-md-1">
+            <section class="row justify-content-around">
+                <div class="col-2 text-bg-primary opacity-75">NAME</div>
+                <div class="col-2 text-bg-primary opacity-75">QTY</div>
+                <div class="col-2 text-bg-primary opacity-75">EACH</div>
+                <div class="col-2 text-bg-primary opacity-75">TOTAL</div>
+            </section>
+            <section>
+                <div id="cart"></div>
+            </section>
+            <section class="row">
+                <div class="col-12 align-items-end px-2">
+                    <span class="fs-1">Total: $<span class="fs-3" id="total">0</span> </span>
+                </div>
+                <section class="col-12 align-items-end px-2">
+                    <button class="btn-primary">PAY</button>
+                </section>
+            </section>
+        </div>
+        <!-- these are the cards -->
+        <div class="col-12 col-md-7 text-white-50 order-1 order-md-2">
+            <section class="row">
+                <h2 class="text-dark mt-3">FLAVORS</h2>
+            </section>
+            <section class="row my-3">
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyVanilla()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=708&q=80"
+                        alt="Vanilla">
+                    <div class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>Vanilla</span>
+                        &nbsp;
+                        <span>$3</span>
+                    </div>
+                </div>
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyCookieDough()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1627908968915-8cc98555b4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                        alt="CookieDough">
+                    <div class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>CookieDough</span>
+                        &nbsp;
+                        <span>$3.50</span>
+                    </div>
+                </div>
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyStrawberry()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1621096229451-38ce90f1035c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                        alt="Strawberry">
+                    <div class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>Strawberry</span>
+                        &nbsp;
+                        <span>$4</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row">
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyRockyRoad()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                        alt="Rocky Road">
+                    <div class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>Rocky Road</span>
+                        &nbsp;
+                        <span>$3.33</span>
+                    </div>
+                </div>
+
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyPistachio()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1534706936160-d5ee67737249?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+                        alt="Pistachio">
+                    <div class="d-flex justify-content-between p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>Pistachio</span>
+                        &nbsp;
+                        <span>$4.04</span>
+                    </div>
+                </div>
+
+                <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyBirthdayCake()">
+                    <img class="menu-img"
+                        src="https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=744&q=80"
+                        alt="BirthdayCake">
+                    <div class="d-flex justify-content-between p-2 fs-8 position-absolute menu-item-blurbbox">
+                        <span>Birthday Cake</span>
+                        &nbsp;
+                        <span>$3.66</span>
+                    </div>
+                </div>
+                <section class="row">
+                    <div class="col-12 text-white-50 order-1 order-md-2 text-center">
+                        <p>
+                        <h2 class="text-dark mt-3">VESSELS</h2>
+                        </p>
+                        <section class="row">
+
+                            <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyVessel()">
+                                <img class="menu-img"
+                                    src="https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=744&q=80"
+                                    alt="BirthdayCake">
+                                <div
+                                    class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                                    <span>Birthday Cake</span>
+                                    &nbsp;
+                                    <span>$3.66</span>
+                                </div>
+                            </div>
+                            <div class="menu-item position-relative col-6 col-md-4 p-2 my-2" onclick="buyVessel()">
+                                <img class="menu-img"
+                                    src="https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=744&q=80"
+                                    alt="BirthdayCake">
+                                <div
+                                    class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                                    <span>Birthday Cake</span>
+                                    &nbsp;
+                                    <span>$3.66</span>
+                                </div>
+                            </div>
+                            <div class="menu-item position-relative col-6 col-md-4 p- my-2" onclick="buyVessel()">
+                                <img class="menu-img"
+                                    src="https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=744&q=80"
+                                    alt="BirthdayCake">
+                                <div
+                                    class="d-flex justify-content-evenly p-2 fs-8 position-absolute menu-item-blurbbox">
+                                    <span>Birthday Cake</span>
+                                    &nbsp;
+                                    <span> $3.66</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </section>
+    </section>
+
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
